@@ -3,13 +3,16 @@ kind: Task
 metadata:
   name: cleanup
 spec:
+  workspaces:
+    - name: output
   steps:
     - name: cleanup
       image: alpine
+      workingDir: /workspace/output
       script: |
         #!/bin/sh
         echo "Cleaning workspace"
-        rm -rf /workspace/*
+        rm -rf ./*
 
 ---
 apiVersion: tekton.dev/v1beta1
@@ -17,10 +20,12 @@ kind: Task
 metadata:
   name: nose-test
 spec:
+  workspaces:
+    - name: source
   steps:
     - name: run-tests
       image: python:3.9-slim
-      workingDir: /workspace
+      workingDir: /workspace/source
       script: |
         #!/bin/sh
         pip install --upgrade pip
