@@ -48,7 +48,7 @@ spec:
         echo "Installing dependencies..."
         npm ci
         echo "Running ESLint..."
-        npm run lint $(params.args)
+        npm run lint -- $(params.args)
 
 ---
 apiVersion: tekton.dev/v1beta1
