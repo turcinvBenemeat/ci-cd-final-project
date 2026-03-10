@@ -2,7 +2,7 @@
   "name": "ci-cd-final-project",
   "version": "1.0.0",
   "scripts": {
-    "lint": "eslint src/ tests/ --ext .js",
+    "lint": "eslint service/ tests/ --ext .js",
     "test": "jest -v"
   },
   "devDependencies": {
